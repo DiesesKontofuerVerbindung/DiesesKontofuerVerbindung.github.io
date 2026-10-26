@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Einbaum</title>
+  <meta name="description" content="Einbaum — projects and contact.">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Top bar: path on the left, language switcher on the right.
+         GPT: wire the switcher; keep aria-current="true" on the active language. -->
+    <header class="topbar mono">
+      <span class="topbar__path"><span class="prompt">~/</span>einbaum</span>
+      <nav aria-label="Language">
+        <ul class="lang">
+          <li><a href="?lang=en" hreflang="en" aria-current="true">EN</a></li>
+          <li><a href="?lang=de" hreflang="de">DE</a></li>
+          <li><a href="?lang=zh" hreflang="zh">中</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero reveal" aria-labelledby="name">
+        <h1 class="hero__name" id="name">Einbaum</h1>
+        <p class="hero__role mono">
+          <span class="prompt">&gt;</span><span data-i18n="hero.role">Software engineer &amp; researcher</span><span class="cursor" aria-hidden="true"></span>
+        </p>
+
+        <div class="hero__bio" data-i18n="hero.bio">
+          <p>I build <em>tools for learning systems</em> — from data pipelines to model evaluation. Currently studying computer science and working on reproducible machine-learning research.</p>
+          <p>Previously at <a class="link" href="#">Placeholder Lab</a>. Open to research collaborations and engineering roles.</p>
+        </div>
+
+        <ul class="socials mono" aria-label="Contact">
+          <li><a class="link" href="https://github.com/">GitHub</a></li>
+          <li><a class="link" href="mailto:hello@example.com">Email</a></li>
+          <li><a class="link" href="#">LinkedIn</a></li>
+          <li><a class="link" href="#">Scholar</a></li>
+        </ul>
+      </section>
+
+      <!-- Projects. GPT: one <li class="project"> per item; tags/year are optional. -->
+      <section class="section" aria-labelledby="projects-label">
+        <h2 class="section__label mono reveal" id="projects-label"><span class="prompt">~/</span>projects</h2>
+
+        <ul class="projects">
+          <li class="project reveal">
+            <a class="project__link" href="#">
+              <h3 class="project__title">Lattice</h3>
+              <span class="project__arrow" aria-hidden="true">↗</span>
+              <p class="project__desc">A small library for reproducible training runs with content-addressed checkpoints.</p>
+              <div class="project__meta mono">
+                <ul class="tags"><li>[python]</li><li>[pytorch]</li></ul>
+                <span class="project__year">2026</span>
+              </div>
+            </a>
+          </li>
+          <li class="project reveal">
+            <a class="project__link" href="#">
+              <h3 class="project__title">Moorland</h3>
+              <span class="project__arrow" aria-hidden="true">↗</span>
+              <p class="project__desc">Benchmark suite and leaderboard for long-context retrieval, with a static report generator.</p>
+              <div class="project__meta mono">
+                <ul class="tags"><li>[python]</li><li>[jax]</li><li>[d3]</li></ul>
+                <span class="project__year">2025</span>
+              </div>
+            </a>
+          </li>
+          <li class="project reveal">
+            <a class="project__link" href="#">
+              <h3 class="project__title">Kanu</h3>
+              <span class="project__arrow" aria-hidden="true">↗</span>
+              <p class="project__desc">Terminal UI for browsing experiment logs over SSH. Zero config, single binary.</p>
+              <div class="project__meta mono">
+                <ul class="tags"><li>[rust]</li><li>[tui]</li></ul>
+                <span class="project__year">2025</span>
+              </div>
+            </a>
+          </li>
+          <li class="project reveal">
+            <a class="project__link" href="#">
+              <h3 class="project__title">Paper: Sparse Probes for Tabular Models</h3>
+              <span class="project__arrow" aria-hidden="true">↗</span>
+              <p class="project__desc">Workshop paper and code on interpreting gradient-boosted models with sparse linear probes.</p>
+              <div class="project__meta mono">
+                <ul class="tags"><li>[research]</li><li>[python]</li></ul>
+                <span class="project__year">2024</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer mono">
+      © 2026 Einbaum · built with <span class="heart">♥</span>
+    </footer>
+  </div>
+
+  <!-- Scroll reveal (presentation only). Content stays visible without JS. -->
+  <script>
+    (function () {
+      var els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach(function (el) { el.classList.add("is-visible"); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
