@@ -52,6 +52,9 @@
   --w-project-detail: 40em;
 
   /* Compact editorial research composition. */
+  --c-research-focus: #23483f;
+  --c-research-topic: #617267;
+  --c-research-line: #d5ded7;
   --w-research-map: 32rem;
   --h-research-map: 12rem;
   --fs-research-focus: clamp(1.5rem, 5.2vw, 3rem);
@@ -59,7 +62,7 @@
   --ls-research-focus: -0.03em;
   --research-center: 50%;
   --research-center-y: 44%;
-  --research-rule: 1px solid var(--c-line);
+  --research-rule: 1px solid var(--c-research-line);
   --research-topic-1-x: 0%;
   --research-topic-1-y: 8%;
   --research-topic-2-x: 0%;
@@ -259,6 +262,7 @@ a:focus-visible {
   left: var(--research-center);
   transform: translate(-50%, -50%);
   margin: 0;
+  color: var(--c-research-focus);
   font-family: var(--f-serif);
   font-size: var(--fs-research-focus);
   font-weight: 600;
@@ -272,7 +276,7 @@ a:focus-visible {
   padding: 0;
   list-style: none;
   font-size: var(--fs-research-topic);
-  color: var(--c-muted);
+  color: var(--c-research-topic);
 }
 
 .research-map__topic {

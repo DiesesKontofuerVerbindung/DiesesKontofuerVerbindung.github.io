@@ -49,6 +49,17 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.locator(".research-map__focus").innerText(), data.research.focus);
       assert.deepEqual(await page.locator(".research-map__topic").allTextContents(), data.research.topics);
       assert.ok((await page.locator(".research-map__focus").evaluate(node => getComputedStyle(node).fontFamily)).includes("Noto Serif SC"));
+      const researchColors = await page.locator(".research-map__focus, .research-map__topic").evaluateAll(nodes => nodes.map(node => getComputedStyle(node).color));
+      assert.equal(researchColors[0], "rgb(35, 72, 63)");
+      assert.ok(researchColors.slice(1).every(color => color === "rgb(97, 114, 103)"));
+      for (const color of researchColors) {
+        const channels = color.match(/\d+/g).slice(0, 3).map(Number).map(value => {
+          const channel = value / 255;
+          return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+        });
+        const luminance = channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+        assert.ok(1.05 / (luminance + 0.05) >= 4.5, "Research text contrast must be at least 4.5:1 against white");
+      }
       const mapBounds = await page.locator(".research-map").boundingBox();
       assert.ok(mapBounds.width <= 512.5 && mapBounds.height <= 192.5, "Research composition must stay compact");
       const termBounds = await page.locator(".research-map__focus, .research-map__topic").evaluateAll(nodes => nodes.map(node => {

@@ -10,8 +10,8 @@ short-copy guidance; all other decisions below remain in force:
 
 - `div.corner-art[aria-hidden="true"] > img` displays the selected artwork at the
   page's upper-right corner. Preserve the original source bytes and its muted
-  botanical colors. The illustration is the only exception to the two-green
-  palette; text, links and interface accents keep the existing tokens.
+  botanical colors. The illustration is an approved exception to the two-green
+  palette; text, links and interface accents follow their assigned tokens.
 - Crop the composition through a layout container to show its upper-right
   branches and clasped hands. At desktop widths the entire container stays in
   the outer margin; narrow screens reserve a separate band above navigation.
@@ -36,6 +36,12 @@ short-copy guidance; all other decisions below remain in force:
   [TLS cover art-direction notes](https://www.darren-smith.co.uk/creative-direction/tls-redesign)
   and [Smashing Magazine's hierarchy examples](https://www.smashingmagazine.com/2022/10/typographic-hierarchies/).
   Borrow alignment, proximity and size hierarchy; do not copy their assets or fonts.
+- On 2026-10-27 the user requested a color variation for this composition.
+  Its headline uses deep pine `--c-research-focus: #23483f`, surrounding terms use
+  gray sage `--c-research-topic: #617267`, and rules use `--c-research-line: #d5ded7`.
+  These scoped tokens are an approved palette exception for the research block;
+  the white background and all other UI colors stay unchanged. Both text colors
+  must retain at least 4.5:1 contrast against white.
 
 ---
 
