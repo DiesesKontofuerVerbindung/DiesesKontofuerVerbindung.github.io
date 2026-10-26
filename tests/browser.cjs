@@ -39,7 +39,8 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.locator(".cursor").count(), 1);
       assert.equal(await page.locator(".hero__role > :last-child").getAttribute("class"), "cursor");
       assert.equal(await page.locator(".hero__bio em").count(), 1);
-      assert.equal(await page.locator(".hero__bio a.link").count(), 1);
+      assert.equal(await page.locator(".hero__bio a.link").count(), data.locales[language]["hero.bio"].flat().filter(part => typeof part === "object" && part.href).length);
+      assert.ok((await page.locator(".hero__bio").textContent()).includes("KIT"));
       assert.equal(await page.locator("nav").getAttribute("aria-label"), data.locales[language]["nav.language"]);
       assert.equal(await page.locator(".socials").getAttribute("aria-label"), data.locales[language]["social.contact"]);
       for (let index = 0; index < data.projects.length; index++) {

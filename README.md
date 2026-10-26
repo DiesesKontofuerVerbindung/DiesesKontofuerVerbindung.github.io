@@ -24,12 +24,12 @@ python -m http.server 8765
 - 切换同步更新 `html[lang]`、title、description、无障碍标签和 `aria-current`。动态项目交给页面底部同一个 IntersectionObserver；不支持 Observer 时直接显示。
 - 单页方案不单独生成 `/de/` 或 `/zh/`：维护较轻；代价是无 JS 只有英文，搜索引擎的首屏 HTML 也只有英文。
 
-姓名为 **Einbaum Xu**，GitHub 账号为 **DiesesKontofuerVerbindung**。长期研究方向 **Agent Security** 由本人提供。项目简介依据以下公开 README，仅概述项目，不推断个人分工或未披露实现：
+姓名为 **Einbaum Xu**，GitHub 账号为 **DiesesKontofuerVerbindung**。长期研究方向 **Agent Security**、就读 **KIT 第三学期**由本人提供。项目简介依据以下公开 README，仅概述项目，不推断个人分工或未披露实现：
 
 - [WhereSheLongs](https://github.com/DiesesKontofuerVerbindung/WhereSheLongs)
 - [ptcg-ai-agent-portfolio](https://github.com/DiesesKontofuerVerbindung/ptcg-ai-agent-portfolio)
 
-个人背景、Email、LinkedIn 和 Scholar 仍为占位；`#` 不是可用目标。发布前请补充或移除这些项目。未读取或发布 TestDaF 成绩；项目年份未核实，因此暂不显示。
+其他个人背景尚未补充；Email、LinkedIn 和 Scholar 仍为占位；`#` 不是可用目标。发布前请补充或移除这些项目。未读取或发布 TestDaF 成绩；项目年份未核实，因此暂不显示。
 
 ## 修改简介
 
