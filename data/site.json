@@ -1,0 +1,149 @@
+{
+  "profile": {
+    "name": "Einbaum Xu",
+    "roleKey": "hero.role",
+    "bioKey": "hero.bio",
+    "socials": [
+      {
+        "id": "github",
+        "href": "https://github.com/DiesesKontofuerVerbindung",
+        "labelKey": "social.github"
+      },
+      {
+        "id": "email",
+        "href": "mailto:hello@example.com",
+        "labelKey": "social.email"
+      },
+      {
+        "id": "linkedin",
+        "href": "#",
+        "labelKey": "social.linkedin"
+      },
+      {
+        "id": "scholar",
+        "href": "#",
+        "labelKey": "social.scholar"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "where-she-longs",
+      "href": "https://github.com/DiesesKontofuerVerbindung/WhereSheLongs",
+      "titleKey": "projects.where-she-longs.title",
+      "descriptionKey": "projects.where-she-longs.description",
+      "tags": [
+        "godot"
+      ]
+    },
+    {
+      "id": "ptcg",
+      "href": "https://github.com/DiesesKontofuerVerbindung/ptcg-ai-agent-portfolio",
+      "titleKey": "projects.ptcg.title",
+      "descriptionKey": "projects.ptcg.description",
+      "tags": [
+        "agents",
+        "planning",
+        "evaluation"
+      ]
+    }
+  ],
+  "locales": {
+    "en": {
+      "meta.title": "Einbaum Xu",
+      "meta.description": "Einbaum Xu — Agent Security, projects and contact.",
+      "nav.language": "Language",
+      "social.contact": "Contact",
+      "hero.role": "Research focus: Agent Security",
+      "hero.bio": [
+        [
+          "My long-term research focus is ",
+          {
+            "em": "Agent Security"
+          },
+          "."
+        ],
+        [
+          {
+            "text": "More about my background",
+            "href": "#"
+          },
+          " and current work will be added here."
+        ]
+      ],
+      "social.github": "GitHub",
+      "social.email": "Email",
+      "social.linkedin": "LinkedIn",
+      "social.scholar": "Scholar",
+      "footer.built": "built with",
+      "projects.where-she-longs.title": "Where She Longs",
+      "projects.where-she-longs.description": "A Godot narrative adventure about self-discovery, with perspective shifts and branching choices.",
+      "projects.ptcg.title": "Pokémon TCG AI Agent",
+      "projects.ptcg.description": "A public portfolio on planning and counterfactual evaluation for Pokémon TCG decision-making agents."
+    },
+    "de": {
+      "meta.title": "Einbaum Xu — Projekte und Kontakt",
+      "meta.description": "Einbaum Xu — Agent Security, Projekte und Kontakt.",
+      "nav.language": "Sprache",
+      "social.contact": "Kontakt",
+      "hero.role": "Forschungsschwerpunkt: Agent Security",
+      "hero.bio": [
+        [
+          "Mein langfristiger Forschungsschwerpunkt ist ",
+          {
+            "em": "Agent Security"
+          },
+          "."
+        ],
+        [
+          {
+            "text": "Weitere Angaben zu meinem Hintergrund",
+            "href": "#"
+          },
+          " und meinen aktuellen Arbeiten folgen hier."
+        ]
+      ],
+      "social.github": "GitHub",
+      "social.email": "E-Mail",
+      "social.linkedin": "LinkedIn",
+      "social.scholar": "Scholar",
+      "footer.built": "erstellt mit",
+      "projects.where-she-longs.title": "Where She Longs",
+      "projects.where-she-longs.description": "Ein narratives Godot-Abenteuer über Selbstfindung, mit Perspektivwechseln und verzweigten Entscheidungen.",
+      "projects.ptcg.title": "Pokémon TCG AI Agent",
+      "projects.ptcg.description": "Ein öffentliches Portfolio zu Planung und kontrafaktischer Evaluation für Entscheidungsagenten im Pokémon TCG."
+    },
+    "zh": {
+      "meta.title": "Einbaum Xu — 项目与联系",
+      "meta.description": "Einbaum Xu — Agent Security 研究方向、项目与联系方式。",
+      "nav.language": "语言",
+      "social.contact": "联系方式",
+      "hero.role": "研究方向：Agent Security",
+      "hero.bio": [
+        [
+          "我的长期研究方向是 ",
+          {
+            "em": "Agent Security"
+          },
+          "。"
+        ],
+        [
+          {
+            "text": "个人背景",
+            "href": "#"
+          },
+          "与当前工作的更多信息待补充。"
+        ]
+      ],
+      "social.github": "GitHub",
+      "social.email": "邮箱",
+      "social.linkedin": "LinkedIn",
+      "social.scholar": "学术主页",
+      "footer.built": "用心构建",
+      "projects.where-she-longs.title": "她所向之处 · Where She Longs",
+      "projects.where-she-longs.description": "以自我发现为主题的 Godot 叙事冒险游戏，结合视角切换与分支选择。",
+      "projects.ptcg.title": "Pokémon TCG AI Agent",
+      "projects.ptcg.description": "关于 Pokémon TCG 决策智能体的公开作品集，介绍规划与反事实评估。"
+    }
+  }
+}
