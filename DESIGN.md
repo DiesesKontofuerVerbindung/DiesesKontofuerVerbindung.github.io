@@ -29,6 +29,13 @@ short-copy guidance; all other decisions below remain in force:
   Use static, selectable text, existing colors and tokenized positions; keep all
   terms separated at 320px and wider. The labels indicate the research landscape,
   not completed work or claimed qualifications. No extra cursor or looping motion.
+- On 2026-10-27 the user requested a more cohesive, magazine-like composition.
+  Keep this group compact (maximum 32rem wide, 12rem tall), enlarge the central
+  serif headline, and align the terms into three pairs along shared baselines.
+  Two existing-color hairline rules anchor the composition. Reference methods:
+  [TLS cover art-direction notes](https://www.darren-smith.co.uk/creative-direction/tls-redesign)
+  and [Smashing Magazine's hierarchy examples](https://www.smashingmagazine.com/2022/10/typographic-hierarchies/).
+  Borrow alignment, proximity and size hierarchy; do not copy their assets or fonts.
 
 ---
 

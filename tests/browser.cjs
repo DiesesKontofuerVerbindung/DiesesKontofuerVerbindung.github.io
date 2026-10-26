@@ -50,10 +50,15 @@ const server = http.createServer((req, res) => {
       assert.deepEqual(await page.locator(".research-map__topic").allTextContents(), data.research.topics);
       assert.ok((await page.locator(".research-map__focus").evaluate(node => getComputedStyle(node).fontFamily)).includes("Noto Serif SC"));
       const mapBounds = await page.locator(".research-map").boundingBox();
+      assert.ok(mapBounds.width <= 512.5 && mapBounds.height <= 192.5, "Research composition must stay compact");
       const termBounds = await page.locator(".research-map__focus, .research-map__topic").evaluateAll(nodes => nodes.map(node => {
         const bounds = node.getBoundingClientRect();
         return { left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom };
       }));
+      for (const [first, second] of [[1, 2], [3, 6], [4, 5]]) {
+        assert.ok(Math.abs(termBounds[first].top - termBounds[second].top) < 0.5, "Editorial side notes must share baselines");
+      }
+      assert.ok(Math.abs((termBounds[0].left + termBounds[0].right) / 2 - (mapBounds.x + mapBounds.width / 2)) < 0.5, "Research headline must stay horizontally centered");
       for (let index = 0; index < termBounds.length; index++) {
         const term = termBounds[index];
         assert.ok(term.left >= mapBounds.x && term.right <= mapBounds.x + mapBounds.width + 0.5, "Research term overflows horizontally");
