@@ -51,6 +51,25 @@
   --lh-project-detail: var(--lh-body);
   --w-project-detail: 40em;
 
+  /* Research word constellation. */
+  --h-research-map: clamp(17rem, 38vw, 19rem);
+  --fs-research-focus: clamp(1.5rem, 4.6vw, 2.25rem);
+  --fs-research-topic: clamp(0.625rem, 1.7vw, 0.8125rem);
+  --ls-research-focus: 0.01em;
+  --research-center: 50%;
+  --research-topic-1-x: 4%;
+  --research-topic-1-y: 16%;
+  --research-topic-2-x: 8%;
+  --research-topic-2-y: 6%;
+  --research-topic-3-x: 0%;
+  --research-topic-3-y: 34%;
+  --research-topic-4-x: 0%;
+  --research-topic-4-y: 24%;
+  --research-topic-5-x: 26%;
+  --research-topic-5-y: 10%;
+  --research-topic-6-x: 0%;
+  --research-topic-6-y: 2%;
+
   /* motion */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --t-fast: 160ms;
@@ -221,6 +240,47 @@ a:focus-visible {
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+/* The terms are real text in reading order; spatial placement adds hierarchy. */
+.research-map {
+  position: relative;
+  height: var(--h-research-map);
+  margin: var(--s-8) 0;
+}
+
+.research-map__focus {
+  position: absolute;
+  top: var(--research-center);
+  left: var(--research-center);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: var(--f-serif);
+  font-size: var(--fs-research-focus);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-research-focus);
+  white-space: nowrap;
+}
+
+.research-map__topics {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-research-topic);
+  color: var(--c-muted);
+}
+
+.research-map__topic {
+  position: absolute;
+  white-space: nowrap;
+}
+
+.research-map__topic:nth-child(1) { left: var(--research-topic-1-x); top: var(--research-topic-1-y); }
+.research-map__topic:nth-child(2) { right: var(--research-topic-2-x); top: var(--research-topic-2-y); }
+.research-map__topic:nth-child(3) { right: var(--research-topic-3-x); top: var(--research-topic-3-y); }
+.research-map__topic:nth-child(4) { left: var(--research-topic-4-x); bottom: var(--research-topic-4-y); }
+.research-map__topic:nth-child(5) { left: var(--research-topic-5-x); bottom: var(--research-topic-5-y); }
+.research-map__topic:nth-child(6) { right: var(--research-topic-6-x); bottom: var(--research-topic-6-y); }
 
 .hero__bio {
   margin: var(--s-8) 0 0;

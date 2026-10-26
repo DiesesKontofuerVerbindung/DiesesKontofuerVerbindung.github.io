@@ -23,6 +23,12 @@ short-copy guidance; all other decisions below remain in force:
   the optional detail adds source-backed context in the body font.
 - New sizing and spacing controls live in `styles.css :root`. Keep the white
   background, existing fonts, single cursor and original text palette.
+- The user requested a research word constellation: `div.research-map` between
+  the role line and bio, with `h2.research-map__focus` reading **AGENT SECURITY** in
+  Noto Serif SC and six smaller related technical labels distributed around it.
+  Use static, selectable text, existing colors and tokenized positions; keep all
+  terms separated at 320px and wider. The labels indicate the research landscape,
+  not completed work or claimed qualifications. No extra cursor or looping motion.
 
 ---
 

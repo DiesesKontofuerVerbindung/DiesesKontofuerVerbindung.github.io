@@ -43,6 +43,15 @@
     return fragment;
   }
 
+  function createResearch() {
+    const fragment = document.createDocumentFragment();
+    fragment.append(element("h2", "research-map__focus", site.research.focus));
+    const topics = element("ul", "research-map__topics mono");
+    for (const topic of site.research.topics) topics.append(element("li", "research-map__topic", topic));
+    fragment.append(topics);
+    return fragment;
+  }
+
   function createSocials(language) {
     const fragment = document.createDocumentFragment();
     for (const social of site.profile.socials) {
@@ -86,11 +95,14 @@
     const bio = createBio(language);
     const socials = createSocials(language);
     const projects = createProjects(language);
+    const research = createResearch();
     document.querySelector(".hero__name").textContent = site.profile.name;
     // The footer name is plain text too; never interpret profile data as HTML.
     document.querySelector("[data-profile-name]").textContent = site.profile.name;
     document.querySelector("[data-i18n='hero.role']").textContent = text(site.profile.roleKey, language);
     document.querySelector(".hero__bio").replaceChildren(bio);
+    document.querySelector(".research-map").replaceChildren(research);
+    document.querySelector(".research-map").setAttribute("aria-label", text("research.label", language));
     document.querySelector(".socials").replaceChildren(socials);
     window.homepageReveal.forget(document.querySelectorAll(".project.reveal"));
     document.querySelector(".projects").replaceChildren(projects);

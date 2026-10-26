@@ -39,7 +39,12 @@ def erzeuge_bereiche(daten):
 {zusatz}    <div class="project__meta mono"><ul class="tags">{tags}</ul>{jahr}</div>
   </a>
 </li>''')
-    return {"name": escape(profil["name"]), "footer-name": escape(profil["name"]), "role": escape(texte[profil["roleKey"]]),
+    forschung = f'<h2 class="research-map__focus">{escape(daten["research"]["focus"])}</h2>'
+    forschung += '<ul class="research-map__topics mono">'
+    for thema in daten["research"]["topics"]:
+        forschung += f'<li class="research-map__topic">{escape(thema)}</li>'
+    forschung += '</ul>'
+    return {"research": forschung, "name": escape(profil["name"]), "footer-name": escape(profil["name"]), "role": escape(texte[profil["roleKey"]]),
             "bio": "\n".join(bio), "socials": "\n".join(sozial), "projects": "\n".join(projekte)}
 
 
@@ -60,6 +65,7 @@ def synchronisiere(pruefen=False):
         (r'(<meta name="description" data-i18n="meta.description" content=").*?(">)', daten["locales"]["en"]["meta.description"]),
         (r'(data-i18n-aria-label="nav.language" aria-label=").*?(")', daten["locales"]["en"]["nav.language"]),
         (r'(data-i18n-aria-label="social.contact" aria-label=").*?(")', daten["locales"]["en"]["social.contact"]),
+        (r'(data-i18n-aria-label="research.label" aria-label=").*?(")', daten["locales"]["en"]["research.label"]),
         (r'(<span data-i18n="footer.built">).*?(</span>)', daten["locales"]["en"]["footer.built"]),
     ]:
         nachher, anzahl = re.subn(muster, lambda treffer: treffer[1] + escape(wert, quote=True) + treffer[2], nachher, flags=re.S)

@@ -15,6 +15,7 @@ python -m http.server 8765
 
 ## 数据与语言
 
+- `data/site.json` 中的 `research.focus` 是星图中央标题，`research.topics` 是四周六个领域词；这些技术名词保持英文。修改六个词的内容即可，增加数量需同时调整布局与防重叠测试。大小和散布位置由 `styles.css :root` 的 research token 控制。无 JS 时同样可见。
 - `data/site.json`：姓名、定位、简介、社交链接、项目和 EN / DE / 中字典，唯一内容来源。
 - `site.js`：原生 JS 读取数据并生成 markup，无依赖、不使用 `innerHTML`；沿用 DESIGN.md 第 5 节 class。
 - `assets/einbaum-hands-leaves.png`：本人选定的握手与枝叶原图，置于页面右上角，来源与排版方式见 [素材说明](assets/README.md)。桌面端放在正文外侧，窄屏为它保留独立顶部空间。
@@ -81,31 +82,19 @@ $env:PLAYWRIGHT_MODULE_PATH = '你的现有 Playwright 模块绝对路径'
 node tests/browser.cjs
 ```
 
-测试自带临时本地 HTTP 服务，覆盖三语、元信息、语言优先级及记忆、动态 reveal、移动端宽度、无 JS / 数据 / 脚本、存储受限与 reduced motion。测试阻断外部字体请求；真实字体和最终视觉请在本地预览确认。
+测试自带临时本地 HTTP 服务，覆盖三语、元信息、语言优先级及记忆、动态 reveal、移动端宽度、无 JS / 数据 / 脚本、存储受限与 reduced motion。测试默认阻断外部字体请求；设置 `$env:ALLOW_WEB_FONTS = '1'` 可额外检查 Noto Serif SC 实际加载及加载后的布局。
 
-## 分支与部署（待本人确认，不自动执行）
+## 分支与部署
 
-流程：`dev` 开发并测试 → 合并 `main` → 本人本地校验 → 经确认合并 `master` → 另外获得 push 同意后，仅推送 `master`。
+仓库必须保持私有，Pages 已下线。发布网站不等于同意公开仓库；重新部署、push 或更改可见性必须先获得明确授权。
 
-2026-10-26 预检：`gh auth status` 的激活账号是正确的 `DiesesKontofuerVerbindung`；查询 `DiesesKontofuerVerbindung/DiesesKontofuerVerbindung.github.io` 未找到仓库，尚不能确认存在且为空。未创建仓库、添加远端或 push。
+流程：`dev` 开发并测试 → 合并 `main` → 本人本地校验 → 经确认合并 `master` → 另外获得 push 同意后，仅推送 `master`。不得自动重新建仓或恢复公开访问。
 
-建仓与最终发布由助手负责，待本人确认 main 本地验收通过后再进行；仓库尚不存在时需要创建公开的同名仓库。push 前仍需重新检查：
+远端操作前先核实账号和隐私状态，任何不符均停止：
 
 ```powershell
 gh auth status
-gh repo view DiesesKontofuerVerbindung/DiesesKontofuerVerbindung.github.io --json nameWithOwner,isEmpty,url
+gh repo view DiesesKontofuerVerbindung/DiesesKontofuerVerbindung.github.io --json nameWithOwner,visibility,isPrivate
 ```
 
-必须是该激活账号、正确仓库且 `isEmpty: true`；不符则停止。下列命令仅供确认，**尚未执行**：
-
-```powershell
-# 只有 main 本地验收通过后
-git switch master
-git merge --ff-only main
-
-# 另获 push 同意且上述预检通过后；已有 origin 时先核对，不覆盖
-git remote add origin https://github.com/DiesesKontofuerVerbindung/DiesesKontofuerVerbindung.github.io.git
-git push -u origin master
-```
-
-GitHub 仓库 **Settings → Pages → Build and deployment**：Source 选择 **Deploy from a branch**，Branch 选择 **master**，目录选择 **/ (root)**，点击 **Save**（[官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)）。以 Pages 设置页最终报告的地址为准，预计为 <https://DiesesKontofuerVerbindung.github.io/>。
+期望账号为 `DiesesKontofuerVerbindung`，仓库为上述仓库且 `visibility: PRIVATE`、`isPrivate: true`。重新上线之前，需先确认保留私有仓库的部署方案及可公开的前端资源范围。

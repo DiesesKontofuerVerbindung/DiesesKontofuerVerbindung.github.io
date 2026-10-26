@@ -82,7 +82,8 @@
       "projects.ptcg.title": "Pokémon TCG AI Agent",
       "projects.ptcg.description": "A public portfolio on planning and counterfactual evaluation for Pokémon TCG decision-making agents.",
       "projects.where-she-longs.detail": "On the night before her wedding, the protagonist enters a dreamlike journey of self-discovery. Perspective shifts, exploration and branching conversations connect the player’s actions to the story, with three endings that are not ranked as good or bad.",
-      "projects.ptcg.detail": "The public overview traces a move from hand-tuned action scores toward structured game-state interpretation, short-horizon planning and paired counterfactual rollouts. It discusses evaluation and human review; competition source code, private heuristics and training artifacts are not published."
+      "projects.ptcg.detail": "The public overview traces a move from hand-tuned action scores toward structured game-state interpretation, short-horizon planning and paired counterfactual rollouts. It discusses evaluation and human review; competition source code, private heuristics and training artifacts are not published.",
+      "research.label": "Agent Security and related research areas"
     },
     "de": {
       "meta.title": "Einbaum Xu — Projekte und Kontakt",
@@ -115,7 +116,8 @@
       "projects.ptcg.title": "Pokémon TCG AI Agent",
       "projects.ptcg.description": "Ein öffentliches Portfolio zu Planung und kontrafaktischer Evaluation für Entscheidungsagenten im Pokémon TCG.",
       "projects.where-she-longs.detail": "In der Nacht vor ihrer Hochzeit begibt sich die Protagonistin auf eine traumartige Reise zu sich selbst. Perspektivwechsel, Erkundung und verzweigte Gespräche verbinden die Handlungen der Spielenden mit der Geschichte; die drei Enden werden nicht als gut oder schlecht bewertet.",
-      "projects.ptcg.detail": "Der öffentliche Überblick beschreibt den Weg von manuell abgestimmten Aktionswerten zu strukturierter Spielzustandsanalyse, kurzfristiger Planung und gepaarten kontrafaktischen Simulationen. Er behandelt Evaluation und menschliche Prüfung; Wettbewerbscode, private Heuristiken und Trainingsartefakte bleiben unveröffentlicht."
+      "projects.ptcg.detail": "Der öffentliche Überblick beschreibt den Weg von manuell abgestimmten Aktionswerten zu strukturierter Spielzustandsanalyse, kurzfristiger Planung und gepaarten kontrafaktischen Simulationen. Er behandelt Evaluation und menschliche Prüfung; Wettbewerbscode, private Heuristiken und Trainingsartefakte bleiben unveröffentlicht.",
+      "research.label": "Agent Security und benachbarte Forschungsgebiete"
     },
     "zh": {
       "meta.title": "Einbaum Xu — 项目与联系",
@@ -148,7 +150,19 @@
       "projects.ptcg.title": "Pokémon TCG AI Agent",
       "projects.ptcg.description": "关于 Pokémon TCG 决策智能体的公开作品集，介绍规划与反事实评估。",
       "projects.where-she-longs.detail": "婚礼前夜，主角走入一场关于自我发现的梦境旅程。游戏通过视角切换、环境探索和分支对话，将玩家行动与叙事连接起来；三个结局不以好坏区分，把选择留给玩家。",
-      "projects.ptcg.detail": "公开作品集介绍了从手工动作评分到结构化状态理解、短程规划与成对反事实推演的探索过程，也说明了评估和人工复核的作用。仓库只展示研究思路，不公开比赛提交代码、私有启发式或训练产物。"
+      "projects.ptcg.detail": "公开作品集介绍了从手工动作评分到结构化状态理解、短程规划与成对反事实推演的探索过程，也说明了评估和人工复核的作用。仓库只展示研究思路，不公开比赛提交代码、私有启发式或训练产物。",
+      "research.label": "Agent Security 与相关研究领域"
     }
+  },
+  "research": {
+    "focus": "AGENT SECURITY",
+    "topics": [
+      "computer security",
+      "network security",
+      "AI safety",
+      "system security",
+      "privacy",
+      "human–agent interaction"
+    ]
   }
 }

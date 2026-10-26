@@ -23,12 +23,15 @@ const server = http.createServer((req, res) => {
   const browser = await chromium.launch({ channel: "chrome", headless: true });
   try {
     const context = await browser.newContext({ locale: "en-US" });
-    await context.route(/fonts\.(googleapis|gstatic)\.com/, route => route.abort());
+    if (process.env.ALLOW_WEB_FONTS !== "1") {
+      await context.route(/fonts\.(googleapis|gstatic)\.com/, route => route.abort());
+    }
     const page = await context.newPage();
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
     async function checkLanguage(language) {
       await page.waitForFunction(lang => document.documentElement.lang === lang && document.querySelector(".hero__role").textContent.includes("Agent Security"), language);
+      if (process.env.ALLOW_WEB_FONTS === "1") await page.evaluate(() => document.fonts.ready);
       assert.equal(await page.title(), data.locales[language]["meta.title"]);
       assert.equal(await page.locator("meta[name=description]").getAttribute("content"), data.locales[language]["meta.description"]);
       assert.equal(await page.locator(".lang a[aria-current=true]").count(), 1);
@@ -42,6 +45,23 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.locator(".hero__bio a.link").count(), data.locales[language]["hero.bio"].flat().filter(part => typeof part === "object" && part.href).length);
       assert.ok((await page.locator(".hero__bio").textContent()).includes("KIT"));
       assert.equal(await page.locator(".hero__bio p").count(), 3);
+      assert.equal(await page.locator(".research-map").getAttribute("aria-label"), data.locales[language]["research.label"]);
+      assert.equal(await page.locator(".research-map__focus").innerText(), data.research.focus);
+      assert.deepEqual(await page.locator(".research-map__topic").allTextContents(), data.research.topics);
+      assert.ok((await page.locator(".research-map__focus").evaluate(node => getComputedStyle(node).fontFamily)).includes("Noto Serif SC"));
+      const mapBounds = await page.locator(".research-map").boundingBox();
+      const termBounds = await page.locator(".research-map__focus, .research-map__topic").evaluateAll(nodes => nodes.map(node => {
+        const bounds = node.getBoundingClientRect();
+        return { left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom };
+      }));
+      for (let index = 0; index < termBounds.length; index++) {
+        const term = termBounds[index];
+        assert.ok(term.left >= mapBounds.x && term.right <= mapBounds.x + mapBounds.width + 0.5, "Research term overflows horizontally");
+        assert.ok(term.top >= mapBounds.y && term.bottom <= mapBounds.y + mapBounds.height + 0.5, "Research term overflows vertically");
+        for (const other of termBounds.slice(index + 1)) {
+          assert.ok(term.right <= other.left || other.right <= term.left || term.bottom <= other.top || other.bottom <= term.top, "Research labels overlap");
+        }
+      }
       assert.equal(await page.locator(".socials a[href='mailto:einbaumvon@gmail.com']").innerText(), "Gmail");
       assert.equal(await page.locator(".socials a").first().getAttribute("href"), "https://github.com/DiesesKontofuerVerbindung");
       assert.equal(await page.locator(".corner-art").getAttribute("aria-hidden"), "true");
@@ -103,8 +123,14 @@ const server = http.createServer((req, res) => {
           fs.mkdirSync(process.env.SCREENSHOT_DIR, { recursive: true });
           await page.waitForFunction(() => [...document.querySelectorAll(".project")].every(node => Number(getComputedStyle(node).opacity) >= 0.999));
           await page.screenshot({ path: path.join(process.env.SCREENSHOT_DIR, `${language}-${width}.png`), fullPage: true });
+          if (language === "en" && width === 1440) {
+            await page.locator(".research-map").screenshot({ path: path.join(process.env.SCREENSHOT_DIR, "research-map.png") });
+          }
         }
       }
+    }
+    if (process.env.ALLOW_WEB_FONTS === "1") {
+      assert.ok(await page.evaluate(() => [...document.fonts].some(font => font.family.includes("Noto Serif SC") && font.status === "loaded")), "Noto Serif SC did not load");
     }
     assert.deepEqual(errors, []);
     await context.close();
@@ -139,6 +165,8 @@ const server = http.createServer((req, res) => {
         assert.equal(await page.locator("html").getAttribute("lang"), "en");
         assert.equal(await page.locator(".project").count(), data.projects.length);
         assert.ok((await page.locator(".hero__bio").textContent()).includes("Agent Security"));
+        assert.equal(await page.locator(".research-map__focus").innerText(), data.research.focus);
+        assert.equal(await page.locator(".research-map__topic").count(), 6);
       }
       assert.equal(await page.locator(".cursor").evaluate(node => getComputedStyle(node).animationName), "none");
       assert.equal(await page.locator(".project").first().evaluate(node => getComputedStyle(node).opacity), "1");
