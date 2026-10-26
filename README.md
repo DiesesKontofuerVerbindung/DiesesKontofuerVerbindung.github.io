@@ -1,6 +1,6 @@
 # Einbaum Xu homepage
 
-无构建工具的静态个人主页。视觉规范见 [DESIGN.md](DESIGN.md)，功能修改未改动 `styles.css`。
+无构建工具的静态个人主页。视觉规范及本人确认的握手与枝叶插画扩展见 [DESIGN.md](DESIGN.md)。白底、原有字体与文字配色保持不变；插画保留本人确认的淡绿色原色。
 
 ## 本地预览
 
@@ -17,6 +17,7 @@ python -m http.server 8765
 
 - `data/site.json`：姓名、定位、简介、社交链接、项目和 EN / DE / 中字典，唯一内容来源。
 - `site.js`：原生 JS 读取数据并生成 markup，无依赖、不使用 `innerHTML`；沿用 DESIGN.md 第 5 节 class。
+- `assets/einbaum-hands-leaves.png`：本人选定的握手与枝叶原图，置于页面右上角，来源与排版方式见 [素材说明](assets/README.md)。桌面端放在正文外侧，窄屏为它保留独立顶部空间。
 - `index.html`：保留英文静态快照。禁用 JS、脚本失败或 JSON 无法加载时仍可阅读英文；无 JS 时语言链接不会产生译文。
 - `.nojekyll`：让 GitHub Pages 直接发布静态文件，无需 Jekyll 处理。
 - `scripts/synchronisiere_inhalte.py`：维护时同步英文快照，不是部署构建步骤。仓库中的 HTML 可以直接部署。
@@ -29,7 +30,7 @@ python -m http.server 8765
 - [WhereSheLongs](https://github.com/DiesesKontofuerVerbindung/WhereSheLongs)
 - [ptcg-ai-agent-portfolio](https://github.com/DiesesKontofuerVerbindung/ptcg-ai-agent-portfolio)
 
-其他个人背景尚未补充；Email、LinkedIn 和 Scholar 仍为占位；`#` 不是可用目标。发布前请补充或移除这些项目。未读取或发布 TestDaF 成绩；项目年份未核实，因此暂不显示。
+联系邮箱为 `einbaumvon@gmail.com`。其他个人背景尚未补充；LinkedIn 和 Scholar 仍为占位，`#` 不是可用目标。发布前请补充或移除这些链接。未读取或发布 TestDaF 成绩；项目年份未核实，因此暂不显示。简介中的研究问题是待本人确认的方向性文案，不代表已有研究成果。
 
 ## 修改简介
 
@@ -61,6 +62,8 @@ python scripts/synchronisiere_inhalte.py --check
 ```
 
 在 `locales.en`、`locales.de`、`locales.zh` 各添加上述两个 key 对应的标题和简介；英文简介建议不超过约 110 字符。`id` 唯一，tags 小写、不加方括号（脚本自动添加），`tags` 和 `year` 可省略。完成后运行上面的同步命令与冒烟测试。无需手写项目 HTML。
+
+需要更长的项目背景时，可再添加 `"detailKey": "projects.new-project.detail"`，并在三语字典中填写对应正文；脚本会生成 `p.project__detail`。只填写可核实的信息，不把计划写成已完成的成果。
 
 ## 验证
 

@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="corner-art" aria-hidden="true">
+    <img src="assets/einbaum-hands-leaves.png" alt="" width="1800" height="1100" decoding="async" draggable="false">
+  </div>
   <div class="wrap">
 
     <!-- Language links also provide shareable URLs. -->
@@ -35,11 +38,12 @@
           <span class="prompt">&gt;</span><span data-i18n="hero.role"><!-- fallback:role:start -->Research focus: Agent Security<!-- fallback:role:end --></span><span class="cursor" aria-hidden="true"></span>
         </p>
 
-        <div class="hero__bio" data-i18n="hero.bio"><!-- fallback:bio:start --><p>My long-term research focus is <em>Agent Security</em>.</p>
-<p>I study at KIT and am currently in my third semester.</p><!-- fallback:bio:end --></div>
+        <div class="hero__bio" data-i18n="hero.bio"><!-- fallback:bio:start --><p>I’m Einbaum Xu, a student at KIT, currently in my third semester. My long-term research focus is <em>Agent Security</em> — the security of systems that can plan, use tools and act on their surroundings.</p>
+<p>This direction raises questions about trust and control: which instructions should an agent follow, what information can it trust, and where should its authority end? These are questions I want to explore as I develop my research interests.</p>
+<p>My public projects span decision-making agents and interactive storytelling. Below are a Pokémon TCG agent portfolio and Where She Longs, a narrative adventure made with Godot. Each offers a different setting for thinking about decisions, interaction and their consequences.</p><!-- fallback:bio:end --></div>
 
         <ul class="socials mono" data-i18n-aria-label="social.contact" aria-label="Contact"><!-- fallback:socials:start --><li><a class="link" href="https://github.com/DiesesKontofuerVerbindung" data-i18n="social.github">GitHub</a></li>
-<li><a class="link" href="mailto:hello@example.com" data-i18n="social.email">Email</a></li>
+<li><a class="link" href="mailto:einbaumvon@gmail.com" data-i18n="social.email">Gmail</a></li>
 <li><a class="link" href="#" data-i18n="social.linkedin">LinkedIn</a></li>
 <li><a class="link" href="#" data-i18n="social.scholar">Scholar</a></li><!-- fallback:socials:end --></ul>
       </section>
@@ -53,6 +57,7 @@
     <h3 class="project__title" data-i18n="projects.where-she-longs.title">Where She Longs</h3>
     <span class="project__arrow" aria-hidden="true">↗</span>
     <p class="project__desc" data-i18n="projects.where-she-longs.description">A Godot narrative adventure about self-discovery, with perspective shifts and branching choices.</p>
+    <p class="project__detail" data-i18n="projects.where-she-longs.detail">On the night before her wedding, the protagonist enters a dreamlike journey of self-discovery. Perspective shifts, exploration and branching conversations connect the player’s actions to the story, with three endings that are not ranked as good or bad.</p>
     <div class="project__meta mono"><ul class="tags"><li>[godot]</li></ul></div>
   </a>
 </li>
@@ -61,6 +66,7 @@
     <h3 class="project__title" data-i18n="projects.ptcg.title">Pokémon TCG AI Agent</h3>
     <span class="project__arrow" aria-hidden="true">↗</span>
     <p class="project__desc" data-i18n="projects.ptcg.description">A public portfolio on planning and counterfactual evaluation for Pokémon TCG decision-making agents.</p>
+    <p class="project__detail" data-i18n="projects.ptcg.detail">The public overview traces a move from hand-tuned action scores toward structured game-state interpretation, short-horizon planning and paired counterfactual rollouts. It discusses evaluation and human review; competition source code, private heuristics and training artifacts are not published.</p>
     <div class="project__meta mono"><ul class="tags"><li>[agents]</li><li>[planning]</li><li>[evaluation]</li></ul></div>
   </a>
 </li><!-- fallback:projects:end --></ul>

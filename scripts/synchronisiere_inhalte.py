@@ -30,12 +30,13 @@ def erzeuge_bereiche(daten):
     for projekt in daten["projects"]:
         tags = "".join(f'<li>[{escape(tag)}]</li>' for tag in projekt.get("tags", []))
         jahr = f'<span class="project__year">{escape(projekt["year"])}</span>' if projekt.get("year") else ""
+        zusatz = f'    <p class="project__detail" data-i18n="{escape(projekt["detailKey"], quote=True)}">{escape(texte[projekt["detailKey"]])}</p>\n' if projekt.get("detailKey") else ""
         projekte.append(f'''<li class="project reveal" data-project="{escape(projekt['id'], quote=True)}">
   <a class="project__link" href="{escape(projekt['href'], quote=True)}">
     <h3 class="project__title" data-i18n="{escape(projekt['titleKey'], quote=True)}">{escape(texte[projekt['titleKey']])}</h3>
     <span class="project__arrow" aria-hidden="true">↗</span>
     <p class="project__desc" data-i18n="{escape(projekt['descriptionKey'], quote=True)}">{escape(texte[projekt['descriptionKey']])}</p>
-    <div class="project__meta mono"><ul class="tags">{tags}</ul>{jahr}</div>
+{zusatz}    <div class="project__meta mono"><ul class="tags">{tags}</ul>{jahr}</div>
   </a>
 </li>''')
     return {"name": escape(profil["name"]), "footer-name": escape(profil["name"]), "role": escape(texte[profil["roleKey"]]),

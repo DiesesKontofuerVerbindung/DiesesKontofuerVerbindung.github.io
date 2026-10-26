@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
   if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
   fs.readFile(file, (error, bytes) => {
     if (error) { res.writeHead(404).end(); return; }
-    res.setHeader("Content-Type", file.endsWith(".js") ? "application/javascript" : file.endsWith(".json") ? "application/json" : file.endsWith(".css") ? "text/css" : "text/html; charset=utf-8");
+    res.setHeader("Content-Type", file.endsWith(".png") ? "image/png" : file.endsWith(".js") ? "application/javascript" : file.endsWith(".json") ? "application/json" : file.endsWith(".css") ? "text/css" : "text/html; charset=utf-8");
     res.end(bytes);
   });
 });
@@ -41,6 +41,30 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.locator(".hero__bio em").count(), 1);
       assert.equal(await page.locator(".hero__bio a.link").count(), data.locales[language]["hero.bio"].flat().filter(part => typeof part === "object" && part.href).length);
       assert.ok((await page.locator(".hero__bio").textContent()).includes("KIT"));
+      assert.equal(await page.locator(".hero__bio p").count(), 3);
+      assert.equal(await page.locator(".socials a[href='mailto:einbaumvon@gmail.com']").innerText(), "Gmail");
+      assert.equal(await page.locator(".socials a").first().getAttribute("href"), "https://github.com/DiesesKontofuerVerbindung");
+      assert.equal(await page.locator(".corner-art").getAttribute("aria-hidden"), "true");
+      assert.equal(await page.locator(".corner-art img").getAttribute("alt"), "");
+      await page.waitForFunction(() => {
+        const image = document.querySelector(".corner-art img");
+        return image.complete && image.naturalWidth === 1800 && image.naturalHeight === 1100;
+      });
+      const ornament = await page.locator(".corner-art").evaluate(node => ({
+        pointerEvents: getComputedStyle(node).pointerEvents,
+        animation: getComputedStyle(node).animationName
+      }));
+      assert.equal(ornament.pointerEvents, "none");
+      assert.equal(ornament.animation, "none");
+      const artBounds = await page.locator(".corner-art").boundingBox();
+      const navBounds = await page.locator("nav").boundingBox();
+      const bioBounds = await page.locator(".hero__bio").boundingBox();
+      if (page.viewportSize().width >= 1200) {
+        assert.ok(artBounds.x >= navBounds.x + navBounds.width);
+        assert.ok(artBounds.x >= bioBounds.x + bioBounds.width);
+      } else {
+        assert.ok(artBounds.y + artBounds.height <= navBounds.y);
+      }
       assert.equal(await page.locator("nav").getAttribute("aria-label"), data.locales[language]["nav.language"]);
       assert.equal(await page.locator(".socials").getAttribute("aria-label"), data.locales[language]["social.contact"]);
       for (let index = 0; index < data.projects.length; index++) {
@@ -49,6 +73,7 @@ const server = http.createServer((req, res) => {
         assert.equal(await row.locator(":scope > a.project__link").count(), 1);
         assert.equal(await row.locator(".project__title").innerText(), data.locales[language][project.titleKey]);
         assert.equal(await row.locator(".project__desc").innerText(), data.locales[language][project.descriptionKey]);
+        if (project.detailKey) assert.equal(await row.locator(".project__detail").innerText(), data.locales[language][project.detailKey]);
         assert.deepEqual(await row.locator(".tags li").allTextContents(), project.tags.map(tag => `[${tag}]`));
         if (project.year) assert.equal(await row.locator(".project__year").innerText(), project.year);
         else assert.equal(await row.locator(".project__year").count(), 0);
@@ -68,7 +93,7 @@ const server = http.createServer((req, res) => {
     await checkLanguage("de");
     await page.goto(url + "?lang=zh"); // Explicit URL wins over storage.
     await checkLanguage("zh");
-    for (const width of [360, 768, 1440]) {
+    for (const width of [320, 360, 768, 1200, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       for (const language of ["en", "de", "zh"]) {
         await page.locator(`.lang a[hreflang=${language}]`).click();
@@ -76,6 +101,7 @@ const server = http.createServer((req, res) => {
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${language}/${width} overflows`);
         if (process.env.SCREENSHOT_DIR && [360, 1440].includes(width)) {
           fs.mkdirSync(process.env.SCREENSHOT_DIR, { recursive: true });
+          await page.waitForFunction(() => [...document.querySelectorAll(".project")].every(node => Number(getComputedStyle(node).opacity) >= 0.999));
           await page.screenshot({ path: path.join(process.env.SCREENSHOT_DIR, `${language}-${width}.png`), fullPage: true });
         }
       }
@@ -118,7 +144,7 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.locator(".project").first().evaluate(node => getComputedStyle(node).opacity), "1");
       await context.close();
     }
-    console.log("PASS: EN/DE/中, metadata, persistence, URL/browser priority, class contract, reveal, 3 widths, no-JS/data/script, invalid data, blocked storage, no observer, reduced motion.");
+    console.log("PASS: EN/DE/中, metadata, persistence, URL/browser priority, class contract, reveal, corner illustration, 5 widths, no-JS/data/script, invalid data, blocked storage, no observer, reduced motion.");
   } finally {
     await browser.close();
     await new Promise(resolve => server.close(resolve));

@@ -42,6 +42,15 @@
   --w-content: 680px;
   --gutter: clamp(1rem, 5vw, 1.5rem);
 
+  /* User-selected corner illustration and expanded copy. */
+  --w-corner-art: clamp(14rem, calc((100vw - var(--w-content)) / 2 - var(--s-6)), 26rem);
+  --w-corner-art-small: 10rem;
+  --h-corner-art-small: calc(var(--w-corner-art-small) * 1.1);
+  --w-corner-art-source: 180%;
+  --ratio-corner-art: 10 / 11;
+  --lh-project-detail: var(--lh-body);
+  --w-project-detail: 40em;
+
   /* motion */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --t-fast: 160ms;
@@ -63,6 +72,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   background: var(--c-bg);
   color: var(--c-text);
@@ -90,9 +100,39 @@ a:focus-visible {
 }
 
 .wrap {
+  position: relative;
   max-width: calc(var(--w-content) + var(--gutter) * 2);
   margin: 0 auto;
   padding: 0 var(--gutter);
+}
+
+/* The original composition is cropped by layout, not redrawn or recolored.
+   Its right-hand scene lives entirely in the desktop outer margin. */
+.corner-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--w-corner-art);
+  aspect-ratio: var(--ratio-corner-art);
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.corner-art img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: var(--w-corner-art-source);
+  max-width: none;
+  height: auto;
+}
+
+/* Narrow viewports get a separate illustration band above the navigation. */
+@media (max-width: 1199px) {
+  body { padding-top: var(--h-corner-art-small); }
+  .corner-art { width: var(--w-corner-art-small); }
 }
 
 .mono {
@@ -310,6 +350,15 @@ a:focus-visible {
   margin: var(--s-2) 0 0;
   color: var(--c-muted);
   font-size: var(--fs-small);
+}
+
+.project__detail {
+  grid-column: 1 / -1;
+  max-width: var(--w-project-detail);
+  margin: var(--s-3) 0 0;
+  color: var(--c-text);
+  font-size: var(--fs-small);
+  line-height: var(--lh-project-detail);
 }
 
 .project__meta {

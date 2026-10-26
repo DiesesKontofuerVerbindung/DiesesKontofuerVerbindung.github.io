@@ -11,7 +11,7 @@
       },
       {
         "id": "email",
-        "href": "mailto:hello@example.com",
+        "href": "mailto:einbaumvon@gmail.com",
         "labelKey": "social.email"
       },
       {
@@ -34,7 +34,8 @@
       "descriptionKey": "projects.where-she-longs.description",
       "tags": [
         "godot"
-      ]
+      ],
+      "detailKey": "projects.where-she-longs.detail"
     },
     {
       "id": "ptcg",
@@ -45,7 +46,8 @@
         "agents",
         "planning",
         "evaluation"
-      ]
+      ],
+      "detailKey": "projects.ptcg.detail"
     }
   ],
   "locales": {
@@ -57,25 +59,30 @@
       "hero.role": "Research focus: Agent Security",
       "hero.bio": [
         [
-          "My long-term research focus is ",
+          "I’m Einbaum Xu, a student at KIT, currently in my third semester. My long-term research focus is ",
           {
             "em": "Agent Security"
           },
-          "."
+          " — the security of systems that can plan, use tools and act on their surroundings."
         ],
         [
-          "I study at KIT and am currently in my third semester."
+          "This direction raises questions about trust and control: which instructions should an agent follow, what information can it trust, and where should its authority end? These are questions I want to explore as I develop my research interests."
+        ],
+        [
+          "My public projects span decision-making agents and interactive storytelling. Below are a Pokémon TCG agent portfolio and Where She Longs, a narrative adventure made with Godot. Each offers a different setting for thinking about decisions, interaction and their consequences."
         ]
       ],
       "social.github": "GitHub",
-      "social.email": "Email",
+      "social.email": "Gmail",
       "social.linkedin": "LinkedIn",
       "social.scholar": "Scholar",
       "footer.built": "built with",
       "projects.where-she-longs.title": "Where She Longs",
       "projects.where-she-longs.description": "A Godot narrative adventure about self-discovery, with perspective shifts and branching choices.",
       "projects.ptcg.title": "Pokémon TCG AI Agent",
-      "projects.ptcg.description": "A public portfolio on planning and counterfactual evaluation for Pokémon TCG decision-making agents."
+      "projects.ptcg.description": "A public portfolio on planning and counterfactual evaluation for Pokémon TCG decision-making agents.",
+      "projects.where-she-longs.detail": "On the night before her wedding, the protagonist enters a dreamlike journey of self-discovery. Perspective shifts, exploration and branching conversations connect the player’s actions to the story, with three endings that are not ranked as good or bad.",
+      "projects.ptcg.detail": "The public overview traces a move from hand-tuned action scores toward structured game-state interpretation, short-horizon planning and paired counterfactual rollouts. It discusses evaluation and human review; competition source code, private heuristics and training artifacts are not published."
     },
     "de": {
       "meta.title": "Einbaum Xu — Projekte und Kontakt",
@@ -85,25 +92,30 @@
       "hero.role": "Forschungsschwerpunkt: Agent Security",
       "hero.bio": [
         [
-          "Mein langfristiger Forschungsschwerpunkt ist ",
+          "Ich bin Einbaum Xu und studiere derzeit im dritten Semester am KIT. Mein langfristiger Forschungsschwerpunkt ist ",
           {
             "em": "Agent Security"
           },
-          "."
+          " — die Sicherheit von Systemen, die planen, Werkzeuge nutzen und in ihrer Umgebung handeln können."
         ],
         [
-          "Ich studiere am KIT und bin derzeit im dritten Semester."
+          "Dabei stellen sich Fragen zu Vertrauen und Kontrolle: Welchen Anweisungen soll ein Agent folgen, welchen Informationen kann er vertrauen, und wo endet seine Befugnis? Mit diesen Fragen möchte ich mich bei der Entwicklung meiner Forschungsinteressen beschäftigen."
+        ],
+        [
+          "Meine öffentlichen Projekte reichen von Entscheidungsagenten bis zum interaktiven Erzählen. Unten stehen ein Portfolio zu einem Pokémon-TCG-Agenten und Where She Longs, ein narratives Abenteuer mit Godot. Beide bieten unterschiedliche Kontexte, um über Entscheidungen, Interaktion und deren Folgen nachzudenken."
         ]
       ],
       "social.github": "GitHub",
-      "social.email": "E-Mail",
+      "social.email": "Gmail",
       "social.linkedin": "LinkedIn",
       "social.scholar": "Scholar",
       "footer.built": "erstellt mit",
       "projects.where-she-longs.title": "Where She Longs",
       "projects.where-she-longs.description": "Ein narratives Godot-Abenteuer über Selbstfindung, mit Perspektivwechseln und verzweigten Entscheidungen.",
       "projects.ptcg.title": "Pokémon TCG AI Agent",
-      "projects.ptcg.description": "Ein öffentliches Portfolio zu Planung und kontrafaktischer Evaluation für Entscheidungsagenten im Pokémon TCG."
+      "projects.ptcg.description": "Ein öffentliches Portfolio zu Planung und kontrafaktischer Evaluation für Entscheidungsagenten im Pokémon TCG.",
+      "projects.where-she-longs.detail": "In der Nacht vor ihrer Hochzeit begibt sich die Protagonistin auf eine traumartige Reise zu sich selbst. Perspektivwechsel, Erkundung und verzweigte Gespräche verbinden die Handlungen der Spielenden mit der Geschichte; die drei Enden werden nicht als gut oder schlecht bewertet.",
+      "projects.ptcg.detail": "Der öffentliche Überblick beschreibt den Weg von manuell abgestimmten Aktionswerten zu strukturierter Spielzustandsanalyse, kurzfristiger Planung und gepaarten kontrafaktischen Simulationen. Er behandelt Evaluation und menschliche Prüfung; Wettbewerbscode, private Heuristiken und Trainingsartefakte bleiben unveröffentlicht."
     },
     "zh": {
       "meta.title": "Einbaum Xu — 项目与联系",
@@ -113,25 +125,30 @@
       "hero.role": "研究方向：Agent Security",
       "hero.bio": [
         [
-          "我的长期研究方向是 ",
+          "我是 Einbaum Xu，就读于 KIT，目前是第三学期。我的长期研究方向是 ",
           {
             "em": "Agent Security"
           },
-          "。"
+          "，关注能够规划、调用工具并与环境交互的智能体系统的安全问题。"
         ],
         [
-          "我就读于 KIT，目前是第三学期。"
+          "这个方向涉及信任与控制：智能体应该遵循哪些指令，能够信任哪些信息，行动权限又应该在哪里止步？这些是我希望在今后的学习与研究中继续探索的问题。"
+        ],
+        [
+          "我的公开项目涵盖决策智能体与互动叙事。下方收录了 Pokémon TCG 智能体作品集，以及使用 Godot 制作的叙事冒险游戏《她所向之处》。它们从不同场景呈现决策、交互及其后果。"
         ]
       ],
       "social.github": "GitHub",
-      "social.email": "邮箱",
+      "social.email": "Gmail",
       "social.linkedin": "LinkedIn",
       "social.scholar": "学术主页",
       "footer.built": "用心构建",
       "projects.where-she-longs.title": "她所向之处 · Where She Longs",
       "projects.where-she-longs.description": "以自我发现为主题的 Godot 叙事冒险游戏，结合视角切换与分支选择。",
       "projects.ptcg.title": "Pokémon TCG AI Agent",
-      "projects.ptcg.description": "关于 Pokémon TCG 决策智能体的公开作品集，介绍规划与反事实评估。"
+      "projects.ptcg.description": "关于 Pokémon TCG 决策智能体的公开作品集，介绍规划与反事实评估。",
+      "projects.where-she-longs.detail": "婚礼前夜，主角走入一场关于自我发现的梦境旅程。游戏通过视角切换、环境探索和分支对话，将玩家行动与叙事连接起来；三个结局不以好坏区分，把选择留给玩家。",
+      "projects.ptcg.detail": "公开作品集介绍了从手工动作评分到结构化状态理解、短程规划与成对反事实推演的探索过程，也说明了评估和人工复核的作用。仓库只展示研究思路，不公开比赛提交代码、私有启发式或训练产物。"
     }
   }
 }

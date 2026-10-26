@@ -66,6 +66,9 @@
       arrow.setAttribute("aria-hidden", "true");
       link.append(element("h3", "project__title", text(project.titleKey, language), project.titleKey), arrow,
         element("p", "project__desc", text(project.descriptionKey, language), project.descriptionKey));
+      if (project.detailKey) {
+        link.append(element("p", "project__detail", text(project.detailKey, language), project.detailKey));
+      }
       const meta = element("div", "project__meta mono");
       const tags = element("ul", "tags");
       for (const tag of project.tags ?? []) tags.append(element("li", "", `[${tag}]`));

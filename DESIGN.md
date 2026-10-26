@@ -2,6 +2,28 @@
 
 This file is the visual contract for the site. The static prototype (`index.html` + `styles.css`) is the reference implementation. Whoever adds behaviour (i18n, data, deploy) should **add logic without changing the visual decisions below**. If something visual must change, change the token in `styles.css :root`, not individual rules.
 
+## Approved refinement — 2026-10-26
+
+The user selected the existing hands-and-leaves composition and requested longer
+body copy. These scoped additions override the original no-image rule and
+short-copy guidance; all other decisions below remain in force:
+
+- `div.corner-art[aria-hidden="true"] > img` displays the selected artwork at the
+  page's upper-right corner. Preserve the original source bytes and its muted
+  botanical colors. The illustration is the only exception to the two-green
+  palette; text, links and interface accents keep the existing tokens.
+- Crop the composition through a layout container to show its upper-right
+  branches and clasped hands. At desktop widths the entire container stays in
+  the outer margin; narrow screens reserve a separate band above navigation.
+  The artwork is static, decorative, pointer-transparent and never covers copy.
+- The hero may contain three fuller paragraphs. Personal facts must remain
+  sourced from the user; research questions are draft framing, not completed work.
+- A project may add `p.project__detail` after `p.project__desc` and before the meta
+  row, inside the existing whole-row link. The short description stays one sentence;
+  the optional detail adds source-backed context in the body font.
+- New sizing and spacing controls live in `styles.css :root`. Keep the white
+  background, existing fonts, single cursor and original text palette.
+
 ---
 
 ## 1. Principles
