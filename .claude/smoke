@@ -1,0 +1,1 @@
+python -c "import html.parser,sys;html.parser.HTMLParser().feed(open('index.html',encoding='utf-8').read());print('ok')"
